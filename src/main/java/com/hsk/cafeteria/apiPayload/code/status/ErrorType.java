@@ -20,8 +20,14 @@ public enum ErrorType implements BaseErrorCode {
     RESOURCE_NOT_FOUND(HttpStatus.NOT_FOUND, "RESOURCE404", "리소스를 찾을 수 없습니다."),
     MISSING_FILED_ERROR(HttpStatus.NOT_IMPLEMENTED, "FIELD501", "필수 파라미터가 누락되었어요."),
 
-    // 공직사항 조회
-    NOT_FOUND_NOTICE_DATA(HttpStatus.NOT_FOUND, "NOTICE404", "불러올 공지사항이 없어요.");
+    // 공지사항 조회
+    NOT_FOUND_NOTICE_DATA(HttpStatus.NOT_FOUND, "NOTICE404", "불러올 공지사항이 없어요."),
+
+    // 식당정보 조회
+    NOT_FOUND_CAFETERIA_DATA(HttpStatus.NOT_FOUND, "NOTICE404", "불러올 식당정보가 없어요."),
+
+    // 혼잡도 조회
+    NOT_FOUND_CONGESTION_DATA(HttpStatus.NOT_FOUND, "NOTICE404", "불러올 혼잡도 데이터가 없어요.");
 
     private final HttpStatus httpStatus;
     private final String code;
