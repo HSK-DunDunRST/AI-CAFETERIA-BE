@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CafeteriaResponse {
+public class CafeteriaRes {
     
     private Long id;
     private String name;

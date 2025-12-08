@@ -1,8 +1,10 @@
 package com.hsk.cafeteria.service;
 
+import com.hsk.cafeteria.apiPayload.code.exception.BaseException;
+import com.hsk.cafeteria.apiPayload.code.status.ErrorType;
 import com.hsk.cafeteria.converter.CongestionConverter;
-import com.hsk.cafeteria.dto.req.CongestionRequest;
-import com.hsk.cafeteria.dto.res.CongestionResponse;
+import com.hsk.cafeteria.dto.req.CongestionReq;
+import com.hsk.cafeteria.dto.res.CongestionRes;
 import com.hsk.cafeteria.entity.CafeteriaEntity;
 import com.hsk.cafeteria.entity.CongestionEntity;
 import com.hsk.cafeteria.entity.enums.CongestionLevel;
@@ -23,24 +25,23 @@ public class CongestionServiceImpl implements CongestionService {
     private final CongestionRepository congestionRepository;
     private final CafeteriaRepository cafeteriaRepository;
     
-    public List<CongestionResponse> getLatestCongestions() {
-        return congestionRepository.findLatestForAllCafeterias()
-                .stream()
+    public List<CongestionRes> getLatestCongestions() {
+        return congestionRepository.findLatestForAllCafeterias().stream()
                 .map(CongestionConverter::from)
-                .collect(Collectors.toList());
+                .toList();
     }
     
-    public CongestionResponse getLatestCongestionByCafeteria(Long cafeteriaId) {
+    public CongestionRes getLatestCongestionByCafeteria(Long cafeteriaId) {
         CongestionEntity congestionEntity = congestionRepository
                 .findFirstByCafeteriaIdOrderByCreatedAtDesc(cafeteriaId)
-                .orElseThrow(() -> new RuntimeException("No congestion data found for cafeteria: " + cafeteriaId));
+                .orElseThrow(() -> new BaseException(ErrorType.NOT_FOUND_CONGESTION_DATA));
         return CongestionConverter.from(congestionEntity);
     }
     
     @Transactional
-    public CongestionResponse updateCongestion(Long cafeteriaId, CongestionRequest request) {
+    public CongestionRes updateCongestion(Long cafeteriaId, CongestionReq request) {
         CafeteriaEntity cafeteria = cafeteriaRepository.findById(cafeteriaId)
-                .orElseThrow(() -> new RuntimeException("Cafeteria not found with id: " + cafeteriaId));
+                .orElseThrow(() -> new BaseException(ErrorType.NOT_FOUND_CAFETERIA_DATA));
 
         CongestionLevel level = CongestionLevel.valueOf(
                 request.getCongestionLevel().toUpperCase()

@@ -1,10 +1,10 @@
 package com.hsk.cafeteria.service;
 
-import com.hsk.cafeteria.dto.res.CafeteriaResponse;
+import com.hsk.cafeteria.dto.res.CafeteriaRes;
 
 import java.util.List;
 
 public interface CafeteriaService {
-    List<CafeteriaResponse> getAllCafeterias();
-    CafeteriaResponse getCafeteriaById(Long id);
+    List<CafeteriaRes> getAllCafeterias();
+    CafeteriaRes getCafeteriaById(Long id);
 }

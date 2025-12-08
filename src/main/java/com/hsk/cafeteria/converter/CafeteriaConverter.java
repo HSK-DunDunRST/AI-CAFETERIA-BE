@@ -1,11 +1,11 @@
 package com.hsk.cafeteria.converter;
 
-import com.hsk.cafeteria.dto.res.CafeteriaResponse;
+import com.hsk.cafeteria.dto.res.CafeteriaRes;
 import com.hsk.cafeteria.entity.CafeteriaEntity;
 
 public class CafeteriaConverter {
-    public static CafeteriaResponse from(CafeteriaEntity cafeteriaEntity) {
-        return CafeteriaResponse.builder()
+    public static CafeteriaRes from(CafeteriaEntity cafeteriaEntity) {
+        return CafeteriaRes.builder()
                 .id(cafeteriaEntity.getId())
                 .name(cafeteriaEntity.getName())
                 .type(cafeteriaEntity.getType().toString())

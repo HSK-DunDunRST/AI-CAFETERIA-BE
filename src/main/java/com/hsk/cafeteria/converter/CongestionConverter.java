@@ -1,11 +1,11 @@
 package com.hsk.cafeteria.converter;
 
-import com.hsk.cafeteria.dto.res.CongestionResponse;
+import com.hsk.cafeteria.dto.res.CongestionRes;
 import com.hsk.cafeteria.entity.CongestionEntity;
 
 public class CongestionConverter {
-    public static CongestionResponse from(CongestionEntity congestionEntity) {
-        return CongestionResponse.builder()
+    public static CongestionRes from(CongestionEntity congestionEntity) {
+        return CongestionRes.builder()
                 .id(congestionEntity.getId())
                 .cafeteriaId(congestionEntity.getCafeteria().getId())
                 .cafeteriaName(congestionEntity.getCafeteria().getName())

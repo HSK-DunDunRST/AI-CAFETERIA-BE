@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CongestionRequest {
+public class CongestionReq {
     
     @NotNull(message = "Congestion level is required")
     @Pattern(regexp = "^(low|medium|high)$", message = "Congestion level must be low, medium, or high")

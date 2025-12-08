@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CongestionResponse {
+public class CongestionRes {
     
     private Long id;
     private Long cafeteriaId;

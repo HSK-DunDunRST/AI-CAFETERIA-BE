@@ -37,7 +37,7 @@ public class MenuEntity extends BaseTimeEntity {
     @Column(name = "cafeteria_type", nullable = false)
     private CafeteriaType cafeteriaType;
 
-    @Column(name = "menu_date", nullable = false)
+    @Column(name = "menu_date")
     private LocalDate menuDate;
 
     @Column(name = "menu_dish", columnDefinition = "TEXT", nullable = false)

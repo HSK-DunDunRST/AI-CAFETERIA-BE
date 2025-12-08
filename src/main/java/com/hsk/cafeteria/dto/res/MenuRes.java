@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MenuResponse {
+public class MenuRes {
     
     private Long id;
     private Long cafeteriaId;

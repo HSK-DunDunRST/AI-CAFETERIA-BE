@@ -8,5 +8,6 @@ import lombok.RequiredArgsConstructor;
 public enum CafeteriaType {
     STUDENT,    // 학생식당
     STAFF,      // 교직원식당
-    DORM        // 기숙사식당
+    HAPPY_DORM, // 행복기숙사
+    HOSEO_DORM  // 직영기숙사
 }
