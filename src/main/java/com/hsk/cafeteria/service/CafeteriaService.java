@@ -6,5 +6,4 @@ import java.util.List;
 
 public interface CafeteriaService {
     List<CafeteriaRes> getAllCafeterias();
-    CafeteriaRes getCafeteriaById(Long id);
 }
