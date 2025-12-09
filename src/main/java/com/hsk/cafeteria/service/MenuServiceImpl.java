@@ -2,14 +2,15 @@ package com.hsk.cafeteria.service;
 
 import com.hsk.cafeteria.converter.MenuConverter;
 import com.hsk.cafeteria.dto.res.MenuRes;
+import com.hsk.cafeteria.entity.enums.CafeteriaType;
 import com.hsk.cafeteria.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.*;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -17,25 +18,20 @@ import java.util.stream.Collectors;
 public class MenuServiceImpl implements MenuService {
     
     private final MenuRepository menuRepository;
-    
-    public List<MenuRes> getMenusByCafeteriaAndDate(Long cafeteriaId, LocalDate date) {
-        return menuRepository.findByCafeteriaIdAndMenuDateOrderByMealType(cafeteriaId, date)
+
+    @Override
+    public List<MenuRes> getStudentCateria(CafeteriaType cafeteriaType) {
+        return menuRepository.findByCafeteriaType(cafeteriaType)
                 .stream()
                 .map(MenuConverter::from)
-                .collect(Collectors.toList());
+                .toList();
     }
-    
-    public List<MenuRes> getMenusByDate(LocalDate date) {
-        return menuRepository.findAllByDateWithCafeteria(date)
+
+    @Override
+    public List<MenuRes> getCafeteriaTypeAndDate(CafeteriaType cafeteriaType, LocalDate date) {
+        return menuRepository.findByCafeteriaTypeAndMenuDate(cafeteriaType, date)
                 .stream()
                 .map(MenuConverter::from)
-                .collect(Collectors.toList());
-    }
-    
-    public List<MenuRes> getMenusByCafeteria(Long cafeteriaId) {
-        return menuRepository.findByCafeteriaIdOrderByMenuDateDescMealTypeAsc(cafeteriaId)
-                .stream()
-                .map(MenuConverter::from)
-                .collect(Collectors.toList());
+                .toList();
     }
 }
