@@ -18,20 +18,20 @@ import java.util.List;
 public class MenuServiceImpl implements MenuService {
     
     private final MenuRepository menuRepository;
-    
-    public List<MenuRes> getStudentMenus() {
-        return menuRepository.findByCafeteriaType(CafeteriaType.STUDENT)
-                .stream()
-                .map(MenuConverter::from)
-                .toList();
-    }
-    
-    public List<MenuRes> getMenusByDate(LocalDate date) {
-        return menuRepository.findAllByDateWithCafeteria(date)
-                .stream()
-                .map(MenuConverter::from)
-                .toList();
 
+    @Override
+    public List<MenuRes> getStudentCateria(CafeteriaType cafeteriaType) {
+        return menuRepository.findByCafeteriaType(cafeteriaType)
+                .stream()
+                .map(MenuConverter::from)
+                .toList();
     }
-    
+
+    @Override
+    public List<MenuRes> getCafeteriaTypeAndDate(CafeteriaType cafeteriaType, LocalDate date) {
+        return menuRepository.findByCafeteriaTypeAndMenuDate(cafeteriaType, date)
+                .stream()
+                .map(MenuConverter::from)
+                .toList();
+    }
 }

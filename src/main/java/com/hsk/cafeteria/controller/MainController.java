@@ -23,6 +23,6 @@ public class MainController {
     @GetMapping
     public ApiResponse<MainRes> getAllData(
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-        return ApiResponse.onSuccess(allDataService.getAllData(date != null ? date : LocalDate.now()));
+        return ApiResponse.onSuccess(allDataService.getData(date != null ? date : LocalDate.now()));
     }
 }

@@ -11,7 +11,9 @@ import java.util.List;
 @AllArgsConstructor
 public class MainRes {
 
-
     private List<CafeteriaRes> cafeteria;
-    private List<MenuRes> menu;
+    private List<MenuRes> student;
+    private List<MenuRes> staff;
+    private List<MenuRes> happyDorm;
+    private List<MenuRes> hoseoDorm;
 }
